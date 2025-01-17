@@ -57,15 +57,16 @@ namespace InventoryManagement
 
     public void AddInventory()
     {
+      Console.WriteLine("Testing AddInventory");
 
     }
     public void ClearItem()
     {
-
+      Console.WriteLine("Testing ClearItem");
     }
     public void ClearAll()
     {
-
+      Console.WriteLine("Testing ClearAll");
     }
   }
 }
