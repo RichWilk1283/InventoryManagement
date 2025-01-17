@@ -23,5 +23,14 @@ internal class Program
     Console.WriteLine("Please enter your option (1-4");
     
     int option = Int32.Parse(Console.ReadLine());
+
+    if (option != 1 || option != 2 || option != 3 || option != 4)
+    {
+      Console.WriteLine("Please make a valid selection");
+    }
+    else
+    {
+      dkInventoryManagement.MenuSelection(option);
+    }
   }
 }

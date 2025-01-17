@@ -18,20 +18,54 @@ namespace InventoryManagement
       Console.WriteLine($"Hello, {Name}");
     }
 
-    public void getInventory()
+    public void MenuSelection(int option)
     {
-      Console.WriteLine($"{Name}, has the following intems:");
-      foreach (var item in InventoryList)
+      switch (option)
       {
-        
-        Console.WriteLine(item);          
+        case 1:
+          GetInventory();
+          break;
+        case 2:
+          AddInventory();
+          break;
+        case 3:
+          ClearItem();
+          break;
+        case 4:
+          ClearAll();
+          break;
       }
     }
 
-    public void addInventory()
+    public void GetInventory()
+    {
+      Console.WriteLine($"{Name}, has the following intems:");
+      if (InventoryList.Count == 0)
+      {
+        Console.WriteLine("Nothing in list.");
+
+      }
+      else
+      {
+        foreach (var item in InventoryList)
+        {
+        
+          Console.WriteLine(item);          
+        }
+      }
+    }
+
+    public void AddInventory()
+    {
+
+    }
+    public void ClearItem()
+    {
+
+    }
+    public void ClearAll()
     {
 
     }
   }
-
 }
