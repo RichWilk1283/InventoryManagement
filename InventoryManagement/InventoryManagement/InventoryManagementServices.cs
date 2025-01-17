@@ -14,7 +14,8 @@ namespace InventoryManagement
     public InventoryManagementServices(string name)
     {
       InventoryList = new Dictionary<string, int>();
-      Name = name;        
+      Name = name;
+      Console.WriteLine($"Hello, {Name}");
     }
 
     public void getInventory()
