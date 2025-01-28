@@ -19,6 +19,29 @@ namespace InventoryManagement
       Console.WriteLine($"Hello, {Name}");
     }
 
+    public void Menu()
+    {
+      Console.WriteLine("Menu:");
+      Console.WriteLine("Option 1: List Inventory Items.");
+      Console.WriteLine("Option 2: Add Inventory Items.");
+      Console.WriteLine("Option 3: Clear individual Inventory Item.");
+      Console.WriteLine("Option 4: Clear all Inventory Items.");
+
+      Console.WriteLine("Please enter your option (1-4)");
+
+      int option = Int32.Parse(Console.ReadLine());
+
+      if (option != 1 && option != 2 && option != 3 && option != 4)
+      {
+        Console.WriteLine("Please make a valid selection");
+        Menu();
+      }
+      else
+      {
+        MenuSelection(option);
+      }
+    }
+
     public void MenuSelection(int option)
     {
       switch (option)
@@ -56,14 +79,28 @@ namespace InventoryManagement
       }
     }
 
-    public InventoryItem createInventoryItem()
+    public void createInventoryItem()
     {
-      return new InventoryItem();
+      InventoryItem item = new InventoryItem();
+      Console.WriteLine("Please enter the name of the item:");
+      item.Name = Console.ReadLine();
+      Console.WriteLine("Please enter the description of the item:");
+      item.Description = Console.ReadLine();
+      Console.WriteLine("Please enter the value of the item:");
+      item.Value = Int32.Parse(Console.ReadLine());
+      Console.WriteLine("Please enter the category of the item:");
+      item.Category = Category.Conservatory;
+
+
+      Console.WriteLine($"You have created: {item.Name}");
+
+      AddInventoryItemToDb(item);
+      Menu();
     }
 
-    public void AddInventory(string name, string description, int value, string cat)
+    public void AddInventoryItemToDb(InventoryItem item)
     {
-      Console.WriteLine("Testing AddInventory");
+      Console.WriteLine("Mock: Added to DB");
 
     }
 
