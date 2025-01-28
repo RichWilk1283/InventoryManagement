@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,11 @@ namespace InventoryManagement
   public class InventoryManagementServices
   {
     public string Name { get; set; }
-    public Dictionary<string, int> InventoryList { get; set; }
+    public List<InventoryItem> InventoryList { get; set; }
 
     public InventoryManagementServices(string name)
     {
-      InventoryList = new Dictionary<string, int>();
+      InventoryList = new List<InventoryItem>();
       Name = name;
       Console.WriteLine($"Hello, {Name}");
     }
@@ -26,7 +27,7 @@ namespace InventoryManagement
           GetInventory();
           break;
         case 2:
-          AddInventory();
+          createInventoryItem();
           break;
         case 3:
           ClearItem();
@@ -55,15 +56,22 @@ namespace InventoryManagement
       }
     }
 
-    public void AddInventory()
+    public InventoryItem createInventoryItem()
+    {
+      return new InventoryItem();
+    }
+
+    public void AddInventory(string name, string description, int value, string cat)
     {
       Console.WriteLine("Testing AddInventory");
 
     }
+
     public void ClearItem()
     {
       Console.WriteLine("Testing ClearItem");
     }
+
     public void ClearAll()
     {
       Console.WriteLine("Testing ClearAll");

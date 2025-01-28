@@ -12,7 +12,7 @@ internal class Program
     string name = Console.ReadLine();
 
 
-    var dkInventoryManagement = new InventoryManagementServices(name);
+    var companyInventoryManagement = new InventoryManagementServices(name);
 
     Console.WriteLine("Menu:");
     Console.WriteLine("Option 1: List Inventory Items.");
@@ -20,17 +20,19 @@ internal class Program
     Console.WriteLine("Option 3: Clear individual Inventory Item.");
     Console.WriteLine("Option 4: Clear all Inventory Items.");
 
-    Console.WriteLine("Please enter your option (1-4");
+    Console.WriteLine("Please enter your option (1-4)");
     
     int option = Int32.Parse(Console.ReadLine());
 
-    if (option != 1 || option != 2 || option != 3 || option != 4)
+    //Console.WriteLine(option.GetType().ToString());
+
+    if (option != 1 && option != 2 && option != 3 && option != 4)
     {
       Console.WriteLine("Please make a valid selection");
     }
     else
     {
-      dkInventoryManagement.MenuSelection(option);
+      companyInventoryManagement.MenuSelection(option);
     }
   }
 }
