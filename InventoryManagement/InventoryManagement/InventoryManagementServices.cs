@@ -29,16 +29,17 @@ namespace InventoryManagement
 
       Console.WriteLine("Please enter your option (1-4)");
 
-      int option = Int32.Parse(Console.ReadLine());
+      var option = Console.ReadLine();
 
-      if (option != 1 && option != 2 && option != 3 && option != 4)
+      if (option != "1" && option != "2" && option != "3" && option != "4")
       {
         Console.WriteLine("Please make a valid selection");
         Menu();
       }
       else
       {
-        MenuSelection(option);
+        int intOption = Int32.Parse(option);
+        MenuSelection(intOption);
       }
     }
 
@@ -94,14 +95,14 @@ namespace InventoryManagement
 
       Console.WriteLine($"You have created: {item.Name}");
 
-      AddInventoryItemToDb(item);
+      AddInventoryItemToList(item);
       Menu();
     }
 
-    public void AddInventoryItemToDb(InventoryItem item)
+    public void AddInventoryItemToList(InventoryItem item)
     {
-      Console.WriteLine("Mock: Added to DB");
-
+      InventoryList.Add(item);
+      Console.WriteLine($"Your inventory list now has {InventoryList.Count} item(s) in it.");
     }
 
     public void ClearItem()
@@ -111,7 +112,8 @@ namespace InventoryManagement
 
     public void ClearAll()
     {
-      Console.WriteLine("Testing ClearAll");
+      InventoryList.Clear();
+      Console.WriteLine("Your list has been cleared.");
     }
   }
 }
