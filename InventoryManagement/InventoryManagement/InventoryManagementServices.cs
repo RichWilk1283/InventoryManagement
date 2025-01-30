@@ -64,18 +64,18 @@ namespace InventoryManagement
 
     public void GetInventory()
     {
+      int inventoryIndex = 0;
       Console.WriteLine($"{Name}, has the following intems:");
       if (InventoryList.Count == 0)
       {
         Console.WriteLine("Nothing in list.");
-
       }
       else
       {
         foreach (var item in InventoryList)
-        {
-        
-          Console.WriteLine(item);          
+        {        
+          Console.WriteLine($"{inventoryIndex} - {item.Name}, {item.Description}, {item.Value}, {item.Category}"); 
+          inventoryIndex++;
         }
       }
     }
@@ -103,6 +103,11 @@ namespace InventoryManagement
     {
       InventoryList.Add(item);
       Console.WriteLine($"Your inventory list now has {InventoryList.Count} item(s) in it.");
+    }
+
+    public void AddInventoryListToDb(List<InventoryItem> dbInventoryList)
+    {
+      //commit to SQLite
     }
 
     public void ClearItem()
