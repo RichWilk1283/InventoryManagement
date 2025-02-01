@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Security.Cryptography.X509Certificates;
+using InventoryManagement.Models;
+using Microsoft.Data.Sqlite;
 
 namespace InventoryManagement
 {
@@ -56,7 +58,35 @@ namespace InventoryManagement
         command.Parameters.AddWithValue("@itemValue", "100");
         command.ExecuteNonQuery();
         Console.WriteLine("Item added successfully.");
+      }
+    }
+
+    public static List<InventoryItem> GetItemsFromDb()
+    {
+      List<InventoryItem> itemsList = new List<InventoryItem>();
+      using (var connection = new SqliteConnection(connectionString))
+      {
+        connection.Open();
+        string query = "SELECT * FROM Items";
+
+        using (var command = new SqliteCommand(query, connection))
+        using (var reader = command.ExecuteReader())
+        {
+          while (reader.Read())
+          {
+            InventoryItem item = new InventoryItem();
+            int itemId = reader.GetInt32(0);
+            item.Name = reader.GetString(1);
+            item.Description = reader.IsDBNull(2) ? "No description" : reader.GetString(2);
+            item.Value = reader.IsDBNull(3) ? 0 : Int32.Parse(reader.GetString(3));
+
+            itemsList.Add(item);
+
+            Console.WriteLine($"Name: {item.Name}, Description: {item.Description}, Value: {item.Value}");
+          }
         }
+      }
+      return itemsList;
     }
   }
 }

@@ -48,7 +48,7 @@ namespace InventoryManagement
       switch (option)
       {
         case 1:
-          GetInventory();
+          GetDbItems();
           break;
         case 2:
           createInventoryItem();
@@ -60,6 +60,12 @@ namespace InventoryManagement
           ClearAll();
           break;
       }
+    }
+
+    public void GetDbItems()
+    {
+      var items = DbServices.GetItemsFromDb();
+      Console.WriteLine(items.Count());
     }
 
     public void GetInventory()
