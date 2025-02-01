@@ -19,6 +19,9 @@ public class Program
       return name;
     }
 
+    DbServices.InitialiseDb();
+    DbServices.DummyData();
+
     var companyInventoryManagement = new InventoryManagementServices(companyName());
 
     companyInventoryManagement.Menu();
